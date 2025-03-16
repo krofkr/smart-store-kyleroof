@@ -24,3 +24,5 @@ git push -u origin main
 After subsequent changes may use
 git push
 
+Execute python script
+python3 scripts/data_prep.py
