@@ -7,3 +7,4 @@ ProductID,ProductName,Category,UnitPrice,StockQuantity,Supplier
 106,controller,Electronics,88.98,120,Samsung
 107,jacket,Clothing,67.02,110,Nike
 108,protector,Electronics,12.56,140,Samsung
+109,zztest,Sports,10000000.25,0,Wilson

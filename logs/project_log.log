@@ -10,3 +10,222 @@
 2025-03-15 23:35:06.254 | INFO     | __main__:read_raw_data:26 - Reading raw data from /Users/kyleroof/Projects/smart-store-kyleroof/data/raw/products_data.csv.
 2025-03-15 23:35:06.258 | INFO     | __main__:read_raw_data:26 - Reading raw data from /Users/kyleroof/Projects/smart-store-kyleroof/data/raw/sales_data.csv.
 2025-03-15 23:35:06.263 | INFO     | __main__:main:45 - Data preparation complete.
+2025-03-23 18:13:50.280 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 18:13:50.281 | INFO     | __main__:main:41 - Starting data preparation...
+2025-03-23 18:13:50.281 | INFO     | __main__:read_raw_data:26 - Reading raw data from /Users/kyleroof/Projects/smart-store-kyleroof/data/raw/customers_data.csv.
+2025-03-23 18:13:50.300 | INFO     | __main__:read_raw_data:26 - Reading raw data from /Users/kyleroof/Projects/smart-store-kyleroof/data/raw/products_data.csv.
+2025-03-23 18:13:50.302 | INFO     | __main__:read_raw_data:26 - Reading raw data from /Users/kyleroof/Projects/smart-store-kyleroof/data/raw/sales_data.csv.
+2025-03-23 18:13:50.305 | INFO     | __main__:main:45 - Data preparation complete.
+2025-03-23 18:47:20.175 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 18:47:20.189 | INFO     | __main__:clean_data:51 - Loaded raw data successfully.
+2025-03-23 18:47:20.250 | INFO     | __main__:remove_fuzzy_duplicates:44 - Removed 1 fuzzy duplicate records.
+2025-03-23 18:47:20.253 | INFO     | __main__:clean_data:65 - Removed 0 rows with invalid regions.
+2025-03-23 18:47:20.257 | INFO     | __main__:clean_data:70 - Capped loyalty points at 100.
+2025-03-23 18:47:20.258 | INFO     | __main__:clean_data:76 - Removed 0 rows with invalid contact methods.
+2025-03-23 18:47:20.261 | INFO     | __main__:clean_data:81 - Validated JoinDate column.
+2025-03-23 18:47:20.310 | INFO     | __main__:clean_data:89 - Exported cleaned data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/customers_data_prepared.csv
+2025-03-23 18:57:51.118 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 18:57:51.130 | INFO     | __main__:clean_data:69 - Loaded raw data successfully.
+2025-03-23 18:57:51.190 | INFO     | __main__:remove_fuzzy_duplicates:46 - Removed 1 fuzzy duplicate records.
+2025-03-23 18:57:51.195 | INFO     | __main__:clean_data:83 - Removed 0 rows with invalid regions.
+2025-03-23 18:57:51.195 | INFO     | __main__:correct_repeated_pattern:59 - Corrected loyalty points from 505050 to 50
+2025-03-23 18:57:51.198 | INFO     | __main__:clean_data:91 - Standardized and capped loyalty points.
+2025-03-23 18:57:51.199 | INFO     | __main__:clean_data:97 - Removed 0 rows with invalid contact methods.
+2025-03-23 18:57:51.205 | INFO     | __main__:clean_data:102 - Validated JoinDate column.
+2025-03-23 18:57:51.208 | INFO     | __main__:clean_data:110 - Exported cleaned data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/customers_data_prepared.csv
+2025-03-23 19:08:17.343 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:08:17.357 | INFO     | __main__:clean_data:41 - Loaded raw products data successfully.
+2025-03-23 19:08:17.367 | INFO     | __main__:clean_data:50 - Removed 1 rows with invalid product names.
+2025-03-23 19:08:17.368 | INFO     | __main__:clean_data:56 - Removed 0 rows with invalid categories.
+2025-03-23 19:08:17.368 | ERROR    | __main__:clean_data:78 - Error during products data cleaning: 'Stock Quantity'
+Traceback (most recent call last):
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/.venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           │    │               └ 'Stock Quantity'
+           │    └ <pandas._libs.properties.CachedProperty object at 0x110026a00>
+           └ Index(['ProductID', 'ProductName', 'Category', 'UnitPrice', 'StockQuantity',
+                    'Supplier'],
+                   dtype='object')
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+
+KeyError: 'Stock Quantity'
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 81, in <module>
+    clean_data()
+    └ <function clean_data at 0x110bc2660>
+
+> File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 60, in clean_data
+    df['Stock Quantity'] = pd.to_numeric(df['Stock Quantity'], errors='coerce')
+    │                      │  │          └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+    │                      │  │            0        101      laptop  Electronics     793.12    ...
+    │                      │  └ <function to_numeric at 0x1104ab880>
+    │                      └ <module 'pandas' from '/Users/kyleroof/Projects/smart-store-kyleroof/.venv/lib/python3.13/site-packages/pandas/__init__.py'>
+    └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+      0        101      laptop  Electronics     793.12    ...
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/.venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              │    │               └ 'Stock Quantity'
+              │    └ <pandas._libs.properties.AxisProperty object at 0x1104f7c40>
+              └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+                0        101      laptop  Electronics     793.12    ...
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/.venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+                   └ 'Stock Quantity'
+
+KeyError: 'Stock Quantity'
+2025-03-23 19:13:34.557 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:13:34.615 | INFO     | __main__:clean_data:41 - Loaded raw products data successfully.
+2025-03-23 19:13:34.627 | INFO     | __main__:clean_data:50 - Removed 1 rows with invalid product names.
+2025-03-23 19:13:34.628 | INFO     | __main__:clean_data:56 - Removed 0 rows with invalid categories.
+2025-03-23 19:13:34.628 | ERROR    | __main__:clean_data:78 - Error during products data cleaning: 'Stock Quantity'
+Traceback (most recent call last):
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/.venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3805, in get_loc
+    return self._engine.get_loc(casted_key)
+           │    │               └ 'Stock Quantity'
+           │    └ <pandas._libs.properties.CachedProperty object at 0x1094e7080>
+           └ Index(['ProductID', 'ProductName', 'Category', 'UnitPrice', 'StockQuantity',
+                    'Supplier'],
+                   dtype='object')
+  File "index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7081, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7089, in pandas._libs.hashtable.PyObjectHashTable.get_item
+
+KeyError: 'Stock Quantity'
+
+
+The above exception was the direct cause of the following exception:
+
+
+Traceback (most recent call last):
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 81, in <module>
+    clean_data()
+    └ <function clean_data at 0x10a08e660>
+
+> File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 60, in clean_data
+    df['Stock Quantity'] = pd.to_numeric(df['Stock Quantity'], errors='coerce')
+    │                      │  │          └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+    │                      │  │            0        101      laptop  Electronics     793.12    ...
+    │                      │  └ <function to_numeric at 0x10996f880>
+    │                      └ <module 'pandas' from '/Users/kyleroof/Projects/smart-store-kyleroof/.venv/lib/python3.13/site-packages/pandas/__init__.py'>
+    └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+      0        101      laptop  Electronics     793.12    ...
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/.venv/lib/python3.13/site-packages/pandas/core/frame.py", line 4102, in __getitem__
+    indexer = self.columns.get_loc(key)
+              │    │               └ 'Stock Quantity'
+              │    └ <pandas._libs.properties.AxisProperty object at 0x1099bbf40>
+              └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+                0        101      laptop  Electronics     793.12    ...
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/.venv/lib/python3.13/site-packages/pandas/core/indexes/base.py", line 3812, in get_loc
+    raise KeyError(key) from err
+                   └ 'Stock Quantity'
+
+KeyError: 'Stock Quantity'
+2025-03-23 19:14:55.479 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:14:55.490 | INFO     | __main__:clean_data:41 - Loaded raw products data successfully.
+2025-03-23 19:14:55.503 | INFO     | __main__:clean_data:50 - Removed 1 rows with invalid product names.
+2025-03-23 19:14:55.505 | INFO     | __main__:clean_data:56 - Removed 0 rows with invalid categories.
+2025-03-23 19:14:55.513 | INFO     | __main__:remove_outliers_iqr:34 - Removed 1 outliers from 'UnitPrice' using IQR method.
+2025-03-23 19:14:55.518 | INFO     | __main__:clean_data:75 - Exported cleaned products data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/products_data_prepared.csv
+2025-03-23 19:18:32.902 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:18:32.915 | INFO     | __main__:clean_data:38 - Loaded raw products data successfully.
+2025-03-23 19:18:32.923 | INFO     | __main__:clean_data:47 - Removed 1 rows with invalid product names.
+2025-03-23 19:18:32.925 | INFO     | __main__:clean_data:53 - Removed 0 rows with invalid categories.
+2025-03-23 19:18:32.934 | INFO     | __main__:remove_outliers_iqr:31 - Removed 1 outliers from 'UnitPrice' with IQR x3.0
+2025-03-23 19:18:32.935 | INFO     | __main__:remove_outliers_iqr:31 - Removed 0 outliers from 'StockQuantity' with IQR x3.0
+2025-03-23 19:18:32.938 | INFO     | __main__:clean_data:72 - Exported cleaned products data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/products_data_prepared.csv
+2025-03-23 19:21:45.701 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:21:45.711 | INFO     | __main__:clean_data:41 - Loaded raw products data successfully.
+2025-03-23 19:21:45.720 | INFO     | __main__:clean_data:50 - Removed 1 rows with invalid product names.
+2025-03-23 19:21:45.721 | INFO     | __main__:clean_data:56 - Removed 0 rows with invalid categories.
+2025-03-23 19:21:45.726 | INFO     | __main__:remove_outliers_iqr:34 - Removed 1 outliers from 'UnitPrice' using IQR x4.0.
+2025-03-23 19:21:45.730 | INFO     | __main__:clean_data:75 - Exported cleaned products data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/products_data_prepared.csv
+2025-03-23 19:22:11.440 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:22:11.452 | INFO     | __main__:clean_data:41 - Loaded raw products data successfully.
+2025-03-23 19:22:11.462 | INFO     | __main__:clean_data:50 - Removed 1 rows with invalid product names.
+2025-03-23 19:22:11.464 | INFO     | __main__:clean_data:56 - Removed 0 rows with invalid categories.
+2025-03-23 19:22:11.473 | INFO     | __main__:remove_outliers_iqr:34 - Removed 1 outliers from 'UnitPrice' using IQR x4.0.
+2025-03-23 19:22:11.478 | INFO     | __main__:clean_data:75 - Exported cleaned products data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/products_data_prepared.csv
+2025-03-23 19:24:20.526 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:24:20.541 | INFO     | __main__:clean_data:50 - Loaded raw products data successfully.
+2025-03-23 19:24:20.549 | INFO     | __main__:clean_data:59 - Removed 1 rows with invalid product names.
+2025-03-23 19:24:20.551 | INFO     | __main__:clean_data:65 - Removed 0 rows with invalid categories.
+2025-03-23 19:24:20.554 | ERROR    | __main__:clean_data:87 - Error during products data cleaning: name 'remove_outliers_iqr' is not defined
+Traceback (most recent call last):
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 90, in <module>
+    clean_data()
+    └ <function clean_data at 0x109522700>
+
+> File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 75, in clean_data
+    df = remove_outliers_iqr(df, 'UnitPrice')
+                             └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+                               0        101      laptop  Electronics     793.12    ...
+
+NameError: name 'remove_outliers_iqr' is not defined
+2025-03-23 19:26:44.780 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:26:44.793 | INFO     | __main__:clean_data:50 - Loaded raw products data successfully.
+2025-03-23 19:26:44.802 | INFO     | __main__:clean_data:59 - Removed 1 rows with invalid product names.
+2025-03-23 19:26:44.804 | INFO     | __main__:clean_data:65 - Removed 0 rows with invalid categories.
+2025-03-23 19:26:44.807 | ERROR    | __main__:clean_data:87 - Error during products data cleaning: name 'remove_outliers_iqr' is not defined
+Traceback (most recent call last):
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 90, in <module>
+    clean_data()
+    └ <function clean_data at 0x110d16700>
+
+> File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 75, in clean_data
+    df = remove_outliers_iqr(df, 'UnitPrice')
+                             └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+                               0        101      laptop  Electronics     793.12    ...
+
+NameError: name 'remove_outliers_iqr' is not defined
+2025-03-23 19:27:52.325 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:27:52.335 | INFO     | __main__:clean_data:50 - Loaded raw products data successfully.
+2025-03-23 19:27:52.345 | INFO     | __main__:clean_data:59 - Removed 1 rows with invalid product names.
+2025-03-23 19:27:52.346 | INFO     | __main__:clean_data:65 - Removed 0 rows with invalid categories.
+2025-03-23 19:27:52.349 | ERROR    | __main__:clean_data:87 - Error during products data cleaning: name 'remove_outliers_iqr' is not defined
+Traceback (most recent call last):
+
+  File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 90, in <module>
+    clean_data()
+    └ <function clean_data at 0x10451e700>
+
+> File "/Users/kyleroof/Projects/smart-store-kyleroof/scripts/data_prep/data_prep_products_data.py", line 75, in clean_data
+    df = remove_outliers_iqr(df, 'UnitPrice')
+                             └    ProductID ProductName     Category  UnitPrice  StockQuantity Supplier
+                               0        101      laptop  Electronics     793.12    ...
+
+NameError: name 'remove_outliers_iqr' is not defined
+2025-03-23 19:33:18.293 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:33:18.303 | INFO     | __main__:clean_data:50 - Loaded raw products data successfully.
+2025-03-23 19:33:18.316 | INFO     | __main__:clean_data:59 - Removed 1 rows with invalid product names.
+2025-03-23 19:33:18.317 | INFO     | __main__:clean_data:65 - Removed 0 rows with invalid categories.
+2025-03-23 19:33:18.332 | INFO     | __main__:clean_data:84 - Exported cleaned products data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/products_data_prepared.csv
+2025-03-23 19:43:23.230 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:43:23.255 | INFO     | __main__:clean_data:49 - Loaded raw sales data successfully.
+2025-03-23 19:43:23.288 | INFO     | __main__:clean_data:58 - Standardized 'SaleDate' to YYYY-MM-DD format.
+2025-03-23 19:43:23.291 | INFO     | __main__:clean_data:64 - Removed 0 rows with invalid PaymentType values.
+2025-03-23 19:43:23.301 | INFO     | __main__:remove_outliers_with_allowlist:42 - Removed 13 outliers from 'saleamount' using IQR x4.0, keeping allowed values: []
+2025-03-23 19:43:23.306 | INFO     | __main__:remove_outliers_with_allowlist:42 - Removed 2 outliers from 'discountpercent' using IQR x4.0, keeping allowed values: [100]
+2025-03-23 19:43:23.309 | INFO     | __main__:clean_data:83 - Exported cleaned sales data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/sales_data_prepared.csv
+2025-03-23 19:44:39.963 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-23 19:44:39.973 | INFO     | __main__:clean_data:49 - Loaded raw sales data successfully.
+2025-03-23 19:44:39.994 | INFO     | __main__:clean_data:58 - Standardized 'SaleDate' to YYYY-MM-DD format.
+2025-03-23 19:44:39.995 | INFO     | __main__:clean_data:64 - Removed 0 rows with invalid PaymentType values.
+2025-03-23 19:44:40.001 | INFO     | __main__:remove_outliers_with_allowlist:42 - Removed 2 outliers from 'discountpercent' using IQR x4.0, keeping allowed values: [100]
+2025-03-23 19:44:40.005 | INFO     | __main__:clean_data:80 - Exported cleaned sales data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/sales_data_prepared.csv

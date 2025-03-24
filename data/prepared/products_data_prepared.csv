@@ -1,0 +1,9 @@
+ProductID,ProductName,Category,UnitPrice,StockQuantity,Supplier
+101,laptop,Electronics,793.12,100,Dell
+102,hoodie,Clothing,39.1,40,Nike
+103,cable,Electronics,22.76,80,Samsung
+104,hat,Clothing,43.1,50,Nike
+105,football,Sports,19.78,20,Wilson
+106,controller,Electronics,88.98,120,Samsung
+107,jacket,Clothing,67.02,110,Nike
+108,protector,Electronics,12.56,140,Samsung
