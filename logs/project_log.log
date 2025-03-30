@@ -229,3 +229,11 @@ NameError: name 'remove_outliers_iqr' is not defined
 2025-03-23 19:44:39.995 | INFO     | __main__:clean_data:64 - Removed 0 rows with invalid PaymentType values.
 2025-03-23 19:44:40.001 | INFO     | __main__:remove_outliers_with_allowlist:42 - Removed 2 outliers from 'discountpercent' using IQR x4.0, keeping allowed values: [100]
 2025-03-23 19:44:40.005 | INFO     | __main__:clean_data:80 - Exported cleaned sales data to /Users/kyleroof/Projects/smart-store-kyleroof/data/prepared/sales_data_prepared.csv
+2025-03-30 14:51:45.974 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-30 14:51:45.975 | INFO     | __main__:main:43 - Starting data warehouse creation...
+2025-03-30 14:51:45.975 | INFO     | __main__:create_dw:31 - Data warehouse created successfully.
+2025-03-30 14:51:45.975 | INFO     | __main__:main:45 - Data warehouse creation complete.
+2025-03-30 14:53:42.510 | INFO     | utils.logger:<module>:39 - Logging to file: logs/project_log.log
+2025-03-30 14:53:42.511 | INFO     | __main__:main:43 - Starting data warehouse creation...
+2025-03-30 14:53:42.514 | INFO     | __main__:create_dw:31 - Data warehouse created successfully.
+2025-03-30 14:53:42.514 | INFO     | __main__:main:45 - Data warehouse creation complete.
