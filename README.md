@@ -67,3 +67,19 @@ Brief summary of the Smart Sales data warehouse and what it accomplishes.
 Screenshot of tables
 ![alt text](image.png)
 
+SQL Queries and Reports
+The first query joins the sale and customer tables to calculate total revenue per customer. The second analysis groups sales by product and region to understand category performance.
+
+Dashboard Design Choices
+I used a bar chart to highlight top-spending customers for clear comparison and a line chart to show sales trends over time. I grouped sales by region and product category to identify regional strengths.
+
+Screenshots of Spark SQL Schema and Query Results
+/Users/kyleroof/Projects/smart-store-kyleroof/screenshots/df_sales.png
+/Users/kyleroof/Projects/smart-store-kyleroof/screenshots/df_filtered.png
+/Users/kyleroof/Projects/smart-store-kyleroof/screenshots/df_combined.png
+/Users/kyleroof/Projects/smart-store-kyleroof/screenshots/df_sales_drill.png
+/Users/kyleroof/Projects/smart-store-kyleroof/screenshots/df_top_customers.png
+
+Screenshots of Final Dashboard/Charts
+/Users/kyleroof/Projects/smart-store-kyleroof/screenshots/plt_monthly_sales_by_year.png
+/Users/kyleroof/Projects/smart-store-kyleroof/screenshots/plt_top_customers_by_spend.png
