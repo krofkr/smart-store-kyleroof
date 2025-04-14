@@ -51,15 +51,13 @@ Brief summary of the Smart Sales data warehouse and what it accomplishes.
 
 5. Screenshot of Schema
 
-(Once you attach, I’ll reference it here)
-
-6. Challenges Encountered
+1. Challenges Encountered
 	•	Column name mismatches between CSVs and schema
 	•	SQLite foreign key constraints
 	•	Schema not updating due to leftover DB file
 	•	Learning curve with pandas .to_sql() and debugging insert issues
 
-7. Future Improvements
+2. Future Improvements
 	•	Add validation/logging
 	•	Switch to PostgreSQL or other RDBMS for production
 	•	Automate schema migrations
